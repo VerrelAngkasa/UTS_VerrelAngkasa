@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         sep = (LinearLayout) findViewById(R.id.sep);
         sep.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {a
+            public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, activity_sep.class);
                 startActivity(intent);
             }
@@ -35,5 +37,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Nama:", "Verrel");
+        editor.apply();
     }
 }

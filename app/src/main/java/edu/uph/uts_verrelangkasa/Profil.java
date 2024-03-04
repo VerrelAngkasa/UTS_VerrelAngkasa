@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +26,11 @@ public class Profil extends AppCompatActivity {
 
         id = findViewById(R.id.id);
         nama = findViewById(R.id.nama);
+        // ambil dari preference
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String nama1 = sharedPreferences.getString("Nama: ", "Verrel");
+        nama.setText(nama1);
         tahun = findViewById(R.id.tahun);
         jurusan = findViewById(R.id.jurusan);
         aktif = findViewById(R.id.aktif);
